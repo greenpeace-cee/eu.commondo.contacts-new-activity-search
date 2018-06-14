@@ -5,13 +5,13 @@
   <description>This extension adds new functionality into the Contact -> New activity form. Except searching contact's by name or email, it giveawys functionality to search contacts by ID.</description>
   <license>AGPL-3.0</license>
   <maintainer>
-    <author>Commondo</author>
+    <author>CommCivi</author>
     <email>patrik.kranjcec@commondo.eu</email>
   </maintainer>
   <urls>
-    <url desc="Main Extension Page">http://example.com</url>
-    <url desc="Documentation">http://example.com</url>
-    <url desc="Support">http://example.com</url>
+    <url desc="Main Extension Page">https://github.com/CommCivi/eu.commondo.contacts-new-activity-search</url>
+    <url desc="Documentation">https://github.com/CommCivi/eu.commondo.contacts-new-activity-search</url>
+    <url desc="Support">https://github.com/CommCivi/eu.commondo.contacts-new-activity-search</url>
     <url desc="Licensing">http://www.gnu.org/licenses/agpl-3.0.html</url>
   </urls>
   <releaseDate>2018-05-21</releaseDate>
@@ -20,7 +20,7 @@
   <compatibility>
     <ver>4.7</ver>
   </compatibility>
-  <comments>Has to be tested and documented.</comments>
+  <comments></comments>
   <civix>
     <namespace>CRM/ContactsNewActivitySearch</namespace>
   </civix>

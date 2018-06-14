@@ -1,15 +1,14 @@
-# eu.commondo.contacts-new-activity-search
+# Contacts new activity search CiviCRM extansion
 
-![Screenshot](/images/screenshot.png)
 
-(*FIXME: In one or two paragraphs, describe what the extension does and why one would download it. *)
+This extension adds new functionality into the Contact -> New activity form. Except searching contact's by name or email, it giveawys functionality to search contacts by ID.
 
 The extension is licensed under [AGPL-3.0](LICENSE.txt).
 
 ## Requirements
 
 * PHP v5.4+
-* CiviCRM (*FIXME: Version number*)
+* CiviCRM (4.7+)
 
 ## Installation (Web UI)
 
@@ -22,7 +21,7 @@ install it with the command-line tool [cv](https://github.com/civicrm/cv).
 
 ```bash
 cd <extension-dir>
-cv dl eu.commondo.contacts-new-activity-search@https://github.com/FIXME/eu.commondo.contacts-new-activity-search/archive/master.zip
+cv dl eu.commondo.contacts-new-activity-search@https://github.com/ComCivi/eu.commondo.contacts-new-activity-search/archive/master.zip
 ```
 
 ## Installation (CLI, Git)
@@ -31,14 +30,14 @@ Sysadmins and developers may clone the [Git](https://en.wikipedia.org/wiki/Git) 
 install it with the command-line tool [cv](https://github.com/civicrm/cv).
 
 ```bash
-git clone https://github.com/FIXME/eu.commondo.contacts-new-activity-search.git
+git clone https://github.com/ComCivi/eu.commondo.contacts-new-activity-search.git
 cv en contacts_new_activity_search
 ```
 
 ## Usage
 
-(* FIXME: Where would a new user navigate to get started? What changes would they see? *)
+NIL
 
 ## Known Issues
 
-(* FIXME *)
+NIL
