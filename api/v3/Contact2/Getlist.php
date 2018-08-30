@@ -29,8 +29,17 @@ function _civicrm_api3_contact2_Getlist_spec(&$spec)
 function civicrm_api3_contact2_Getlist($params)
 {
 
-    $entity = _civicrm_api_get_entity_name_from_camel($params['entity']);
-    $input = $params['input'];
+    if (isset($params['entity'])) {
+        $entity = _civicrm_api_get_entity_name_from_camel($params['entity']);
+    } else {
+        $entity = 'contact';
+    }
+
+    if (isset($params['input'])) {
+        $input = $params['input'];
+    } else {
+        $input = '';
+    }
 
     $returnValues = array();
     $output = array();
@@ -74,7 +83,12 @@ function civicrm_api3_contact2_Getlist($params)
         $returnValues[] = array('id' => $contact['id'], 'label' => $contact['display_name'], 'description' => array('Contact ID: ' . $contact['id'], $contact['email']), 'icon_class' => $contact['contact_type']);
     }
 
-    $output['page_num'] = $params['page_num'];
+
+    if (isset($params['page_num'])) {
+        $output['page_num'] = $params['page_num'];
+    } else {
+        $output['page_num'] = 1;
+    }
     //$output['more_results'] = TRUE;
 
     // ALTERNATIVE: $returnValues = array(); // OK, success
