@@ -167,19 +167,17 @@ function contacts_new_activity_search_civicrm_alterSettingsFolders(&$metaDataFol
 
 function contacts_new_activity_search_civicrm_preProcess($formName, &$form)
 {
+    if(isset($form->_fields)) {
+        foreach ($form->_fields as $key => $field) {
 
-    if ($formName === 'CRM_Activity_Form_Activity') {
+            if ($field['type'] == 'entityRef' and (empty($field['attributes']['entity']) or $field['attributes']['entity'] = 'contact')) {
 
-        $form->_fields['target_contact_id'] =
-            array(
-                'type' => 'entityRef',
-                'label' => ts('With Contact'),
-                'attributes' => array(
-                    'entity' => 'contact2',
-                    'multiple' => TRUE,
-                    "create" => TRUE,
-                    'api' => array(
-                        'extra' => array('id'))
-                ));
+                $form->_fields[$key]['attributes']['entity'] = 'contact2';
+                //$form->_fields[$key]['attributes']['multiple'] = true;
+                //$form->_fields[$key]['attributes']['create'] = true;
+                //$form->_fields[$key]['attributes']['api']['extra'] = array('id');
+            }
+        }
     }
+
 }
