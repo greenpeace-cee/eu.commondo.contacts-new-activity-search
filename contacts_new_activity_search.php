@@ -165,19 +165,11 @@ function contacts_new_activity_search_civicrm_alterSettingsFolders(&$metaDataFol
  * } // */
 
 
-function contacts_new_activity_search_civicrm_preProcess($formName, &$form)
+function contacts_new_activity_search_civicrm_buildForm($formName, &$form)
 {
-    if(isset($form->_fields)) {
-        foreach ($form->_fields as $key => $field) {
-
-            if ($field['type'] == 'entityRef' and (empty($field['attributes']['entity']) or $field['attributes']['entity'] = 'contact')) {
-
-                $form->_fields[$key]['attributes']['entity'] = 'contact2';
-                //$form->_fields[$key]['attributes']['multiple'] = true;
-                //$form->_fields[$key]['attributes']['create'] = true;
-                //$form->_fields[$key]['attributes']['api']['extra'] = array('id');
-            }
-        }
+  foreach ($form->_elements as $element) {
+    if (isset($element->_attributes['data-api-entity']) && $element->_attributes['data-api-entity'] == 'contact') {
+      $element->_attributes['data-api-entity'] = 'contact2';
     }
-
+  }
 }
