@@ -18,7 +18,7 @@ function _civicrm_api3_contact2_Getlist_spec(&$spec)
 /**
  * Contact2.Getlist API
  * Extended Contact.getlist API call.
- * This getlist API call can search by Contact ID (if input is numeric) or by display name and email (if input is string).
+ * This getlist API call can search by Contact ID (if input is numeric) or by sort name and email (if input is string).
  *
  * @param array $params
  * @return array API result descriptor
@@ -44,28 +44,34 @@ function civicrm_api3_contact2_Getlist($params)
     $returnValues = array();
     $output = array();
 
-    // Check input to find out whether to search by ID OR display name and email
+    // Check input to find out whether to search by ID OR sort name and email
     if (is_numeric($input)) {
 
         $result = civicrm_api3('Contact', 'get', array(
             'sequential' => 1,
-            'return' => "id,display_name,email,contact_type",
+            'return' => "id,sort_name,email,contact_type",
             'id' => $input,
         ));
 
     } else {
 
-        // Search input string by contact display name
+        // Search input string by contact sort name
         $result = civicrm_api3('Contact', 'get', array(
             'sequential' => 1,
-            'return' => "id,display_name,email,contact_type",
-            'display_name' => $input,
+            'return' => "id,sort_name,email,contact_type",
+            'options' => [
+              'sort' => 'sort_name',
+            ],
+            'sort_name' => $input,
         ));
 
         // Search input string by contact email
         $result2 = civicrm_api3('Contact', 'get', array(
             'sequential' => 1,
-            'return' => "id,display_name,email,contact_type",
+            'return' => "id,sort_name,email,contact_type",
+            'options' => [
+              'sort' => 'sort_name',
+            ],
             'email' => $input,
         ));
 
@@ -80,7 +86,7 @@ function civicrm_api3_contact2_Getlist($params)
 
     // Structure data for output.
     foreach ($result['values'] as $contact) {
-        $returnValues[] = array('id' => $contact['id'], 'label' => $contact['display_name'], 'description' => array('Contact ID: ' . $contact['id'], $contact['email']), 'icon_class' => $contact['contact_type']);
+        $returnValues[] = array('id' => $contact['id'], 'label' => $contact['sort_name'], 'description' => array('Contact ID: ' . $contact['id'], $contact['email']), 'icon_class' => $contact['contact_type']);
     }
 
 
